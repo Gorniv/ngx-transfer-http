@@ -1,43 +1,47 @@
 {
-    "name": "@gorniv/ngx-transfer-http",
-    "version": "1.0.0",
-    "description": "Implementation http for Angular universal work based on TransferState",
-    "keywords": [
-        "angular",
-        "angular5",
-        "angular6",
-        "universal",
-        "angular-library",
-        "typescript"
-    ],
-    "author": "gorniv <gornivv@gmail.com>",
-    "license": "MIT",
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/Gorniv/ngx-transfer-http.git"
-    },
-    "maintainers": [
-        {
-            "name": "gorniv",
-            "email": "gornivv@gmail.com"
-        }
-    ],
-    "bugs": {
-        "url": "https://github.com/Gorniv/ngx-transfer-http/issues"
-    },
-    "homepage": "https://github.com/Gorniv/ngx-transfer-http",
-    "peerDependencies": {
-        "@angular/common": ">=5.0.0 <7.0.0",
-        "@angular/compiler": ">=5.0.0 <7.0.0",
-        "@angular/core": ">=5.0.0 <7.0.0",
-        "typescript": ">=2.4.2",
-        "rxjs": ">=6.0.0 || ^5.6.0-forward-compat.4"
-    },
-    "ngPackage": {
-        "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
-        "lib": {
-            "entryFile": "public_api.ts"
-        },
-        "dest": "./dist"
+  "name": "@gorniv/ngx-transfer-http",
+  "version": "1.0.1",
+  "description": "Implementation http for Angular universal work based on TransferState",
+  "keywords": [
+    "angular",
+    "angular5",
+    "angular6",
+    "universal",
+    "angular-library",
+    "typescript"
+  ],
+  "author": "gorniv <gornivv@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gorniv/ngx-transfer-http.git"
+  },
+  "maintainers": [
+    {
+      "name": "gorniv",
+      "email": "gornivv@gmail.com"
     }
+  ],
+  "bugs": {
+    "url": "https://github.com/Gorniv/ngx-transfer-http/issues"
+  },
+  "scripts": {
+    "dry": "standard-version --dry-run",
+    "standard": "standard-version"
+  },
+  "homepage": "https://github.com/Gorniv/ngx-transfer-http",
+  "peerDependencies": {
+    "@angular/common": ">=5.0.0 <7.0.0",
+    "@angular/compiler": ">=5.0.0 <7.0.0",
+    "@angular/core": ">=5.0.0 <7.0.0",
+    "typescript": ">=2.4.2",
+    "rxjs": ">=6.0.0 || ^5.6.0-forward-compat.4"
+  },
+  "ngPackage": {
+    "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
+    "lib": {
+      "entryFile": "public_api.ts"
+    },
+    "dest": "./dist"
+  }
 }
