@@ -1,14 +1,19 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { TransferState } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { fromPromise } from 'rxjs/observable/fromPromise';
+import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 
 @Injectable()
 export class TransferHttpService {
-  constructor(protected transferState: TransferState,
-    private httpClient: HttpClient) {
+  constructor(
+    protected transferState: TransferState,
+    private httpClient: HttpClient,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {
+
   }
 
   public request(method: string, uri: string | Request, options?: {
@@ -226,11 +231,19 @@ export class TransferHttpService {
     }
   }
 
-  private resolveData(key: string): any {
+  private resolveData(key: any): any {
     const data = this.getFromCache(key);
 
     if (!data) {
       throw new Error();
+    }
+
+    if (isPlatformBrowser(this.platformId)) {
+      // Client only code.
+      this.transferState.remove(key);
+    }
+    if (isPlatformServer(this.platformId)) {
+      // Server only code.
     }
 
     return fromPromise(Promise.resolve(data));

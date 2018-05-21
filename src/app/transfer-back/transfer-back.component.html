@@ -2,7 +2,7 @@
 <p>{{ "back-http.text" | translate }}</p>
 
 <hr>
-
+<button (click)="loadPost()">load post</button>
 <strong>{{ "back-http.delay" | translate }}</strong>
 <pre *ngIf="result; else noResult">
     {{ result | json }}
