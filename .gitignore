@@ -1,2 +1,5 @@
 dist-server/*
 dist/*
+package-lock.json
+yarn.lock
+lib/ngx-transfer-http/package-lock.json
