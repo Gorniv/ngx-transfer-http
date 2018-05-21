@@ -226,7 +226,13 @@ export class TransferHttpService {
     } catch (e) {
       return callback(uri, body, options)
         .pipe(tap(data => {
-          this.setCache(key, data);
+          if (isPlatformBrowser(this.platformId)) {
+            // Client only code.
+            // nothing;
+          }
+          if (isPlatformServer(this.platformId)) {
+            this.setCache(key, data);
+          }
         }));
     }
   }
