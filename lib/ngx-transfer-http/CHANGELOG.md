@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.1.2"></a>
+## [1.1.2](https://github.com/Gorniv/ngx-transfer-http/compare/v1.1.1...v1.1.2) (2018-05-22)
+
+
+### Bug Fixes
+
+* **cache:** getData use platform ([7dce74d](https://github.com/Gorniv/ngx-transfer-http/commit/7dce74d))
+
+
+
 <a name="1.1.1"></a>
 ## [1.1.1](https://github.com/Gorniv/ngx-transfer-http/compare/v1.1.0...v1.1.1) (2018-05-21)
 
