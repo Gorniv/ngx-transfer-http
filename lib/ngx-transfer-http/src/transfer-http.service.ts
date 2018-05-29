@@ -1,9 +1,8 @@
 import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { TransferState } from '@angular/platform-browser';
-import { Observable } from 'rxjs';
+import { Observable, from } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { fromPromise } from 'rxjs/observable/fromPromise';
 import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 
 @Injectable()
@@ -258,7 +257,7 @@ export class TransferHttpService {
       // Server only code.
     }
 
-    return fromPromise(Promise.resolve(data));
+    return from(Promise.resolve(data));
   }
 
   private setCache(key, data): any {
