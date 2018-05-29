@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.0.1"></a>
+## [2.0.1](https://github.com/Gorniv/ngx-transfer-http/compare/v2.0.0...v2.0.1) (2018-05-29)
+
+
+### Bug Fixes
+
+* Compile npm package
+
+
+
 <a name="2.0.0"></a>
 ## [2.0.0](https://github.com/Gorniv/ngx-transfer-http/compare/v1.1.2...v2.0.0) (2018-05-29)
 
@@ -12,7 +22,6 @@ All notable changes to this project will be documented in this file. See [standa
 
 <a name="1.1.2"></a>
 ## [1.1.2](https://github.com/Gorniv/ngx-transfer-http/compare/v1.1.1...v1.1.2) (2018-05-22)
-
 
 
 ### Bug Fixes
