@@ -1,5 +1,7 @@
+node_modules
 dist-server/*
 dist/*
 package-lock.json
 yarn.lock
+yarn-error.log
 lib/ngx-transfer-http/package-lock.json
