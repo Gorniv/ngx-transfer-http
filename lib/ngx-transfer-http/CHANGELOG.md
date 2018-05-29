@@ -2,8 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.0.0"></a>
+## [2.0.0](https://github.com/Gorniv/ngx-transfer-http/compare/v1.1.2...v2.0.0) (2018-05-29)
+
+
+### BREAKING CHANGES
+
+* Update RXJS import to v6 compactible ([6ccbab1](https://github.com/Gorniv/ngx-transfer-http/commit/6ccbab1))
+
 <a name="1.1.2"></a>
 ## [1.1.2](https://github.com/Gorniv/ngx-transfer-http/compare/v1.1.1...v1.1.2) (2018-05-22)
+
 
 
 ### Bug Fixes
