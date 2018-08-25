@@ -194,10 +194,9 @@ export class TransferHttpService {
     }
 
     const tempKey = url + (options ? JSON.stringify(options) : '');
-    const key = makeStateKey<string>(tempKey);
-
+    const key = makeStateKey<T>(tempKey);
     try {
-      return this.resolveData(key);
+      return this.resolveData<T>(key);
     } catch (e) {
       return callback(method, uri, options)
         .pipe(tap((data: T) => {
@@ -206,7 +205,7 @@ export class TransferHttpService {
             // nothing;
           }
           if (isPlatformServer(this.platformId)) {
-            this.setCache(key, data);
+            this.setCache<T>(key, data);
           }
         }));
     }
@@ -225,10 +224,10 @@ export class TransferHttpService {
     }
 
     const tempKey = url + (body ? JSON.stringify(body) : '') + (options ? JSON.stringify(options) : '');
-    const key = makeStateKey<string>(tempKey);
+    const key = makeStateKey<T>(tempKey);
 
     try {
-      return this.resolveData(key);
+      return this.resolveData<T>(key);
     } catch (e) {
       return callback(uri, body, options)
         .pipe(tap((data: T) => {
@@ -237,13 +236,13 @@ export class TransferHttpService {
             // nothing;
           }
           if (isPlatformServer(this.platformId)) {
-            this.setCache(key, data);
+            this.setCache<T>(key, data);
           }
         }));
     }
   }
 
-  private resolveData<T>(key: StateKey<string>): Observable<T> {
+  private resolveData<T>(key: StateKey<T>): Observable<T> {
     const data = this.getFromCache<T>(key);
 
     if (!data) {
@@ -258,14 +257,14 @@ export class TransferHttpService {
       // Server only code.
     }
 
-    return from(Promise.resolve(data));
+    return from(Promise.resolve<T>(data));
   }
 
-  private setCache<T>(key: StateKey<string>, data: T): void {
-    return this.transferState.set<string>(key, JSON.stringify(data));
+  private setCache<T>(key: StateKey<T>, data: T): void {
+    return this.transferState.set<T>(key, data);
   }
 
-  private getFromCache<T>(key: StateKey<string>): T {
+  private getFromCache<T>(key: StateKey<T>): T {
     return this.transferState.get<T>(key, null);
   }
 }

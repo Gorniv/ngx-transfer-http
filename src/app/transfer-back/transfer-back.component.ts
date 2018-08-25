@@ -1,6 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { TransferHttpService } from '@gorniv/ngx-transfer-http';
 
+import { RootObject } from './RootObject';
+
 @Component({
   selector: 'app-transfer-back',
   templateUrl: './transfer-back.component.html'
@@ -18,7 +20,9 @@ export class TransferBackComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.http.get('https://reqres.in/api/users?delay=3').subscribe(result => {
+    
+    this.http.get<RootObject>('https://reqres.in/api/users?delay=1').subscribe(result => {
+      console.log(result);
       this.resultGet = result;
     });
 
@@ -26,6 +30,7 @@ export class TransferBackComponent implements OnInit {
       'name': 'morpheus',
       'job': 'leader'
     }).subscribe(result => {
+      console.log(result);
       this.resultPost = result;
     });
 
@@ -36,14 +41,14 @@ export class TransferBackComponent implements OnInit {
       this.resultPut = result;
     });
 
-    this.http.patch('https://reqres.in/api/users/2', {
+    this.http.patch('https://reqres.in/api/users/3', {
       'name': 'morpheus',
       'job': 'zion resident'
     }).subscribe(result => {
       this.resultPatch = result;
     });
 
-    this.http.delete('https://reqres.in/api/users/2').subscribe(result => {
+    this.http.delete('https://reqres.in/api/users/4').subscribe(result => {
       this.resultDelete = result;
     });
 
