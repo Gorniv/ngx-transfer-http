@@ -112,8 +112,38 @@
           "builder": "@angular-devkit/build-angular:server",
           "options": {
             "outputPath": "dist-server",
-            "main": "main.server.ts",
-            "tsConfig": "tsconfig.server.json"
+            "main": "src/main.server.ts",
+            "tsConfig": "src/tsconfig.server.json"
+          },
+          "configurations": {
+            "dev": {
+              "optimization": false,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/server/environment.ts"
+                }
+              ]
+            },
+            "production": {
+              "optimization": false,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/server/environment.prod.ts"
+                }
+              ]
+            }
           }
         }
       }

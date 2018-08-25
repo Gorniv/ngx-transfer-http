@@ -1,6 +1,4 @@
 import { Component, OnInit, Inject } from '@angular/core';
-
-import { AppStorage } from '@shared/for-storage/universal.inject';
 import { TransferHttpService } from '@gorniv/ngx-transfer-http';
 
 @Component({
@@ -8,23 +6,51 @@ import { TransferHttpService } from '@gorniv/ngx-transfer-http';
   templateUrl: './transfer-back.component.html'
 })
 export class TransferBackComponent implements OnInit {
-  public result: any;
-  public resultPost: any;
+  resultGet: any;
+  resultPost: any;
+  resultPut: any;
+  resultPatch: any;
+  resultDelete: any;
 
   constructor(private http: TransferHttpService,
-    @Inject(AppStorage) private appStorage: Storage,
     @Inject('ORIGIN_URL') public baseUrl: string) {
     console.log(`ORIGIN_URL=${baseUrl}`);
   }
 
   ngOnInit(): void {
     this.http.get('https://reqres.in/api/users?delay=3').subscribe(result => {
-      this.result = result;
+      this.resultGet = result;
     });
+
+    this.http.post('https://reqres.in/api/users', {
+      'name': 'morpheus',
+      'job': 'leader'
+    }).subscribe(result => {
+      this.resultPost = result;
+    });
+
+    this.http.put('https://reqres.in/api/users/2', {
+      'name': 'morpheus',
+      'job': 'zion resident'
+    }).subscribe(result => {
+      this.resultPut = result;
+    });
+
+    this.http.patch('https://reqres.in/api/users/2', {
+      'name': 'morpheus',
+      'job': 'zion resident'
+    }).subscribe(result => {
+      this.resultPatch = result;
+    });
+
+    this.http.delete('https://reqres.in/api/users/2').subscribe(result => {
+      this.resultDelete = result;
+    });
+
     this.loadPost();
   }
 
-  loadPost() {
+  loadPost(): void {
     console.log('see network');
     const resultSub = this.http.post('https://reqres.in/api/users', JSON.stringify({
       'name': 'morpheus',

@@ -1,19 +1,26 @@
-<h1>{{ "back-http.title" | translate }}</h1>
-<p>{{ "back-http.text" | translate }}</p>
-
 <hr>
 <button (click)="loadPost()">load post</button>
-<strong>{{ "back-http.delay" | translate }}</strong>
-<pre *ngIf="result; else noResult">
-    {{ result | json }}
+GET
+<pre *ngIf="resultGet; else noResult">
+    {{ resultGet | json }}
 </pre>
-<ng-template #noResult>
-    <p>{{ "loading" | translate }}...</p>
-</ng-template>
-<br/>
-<strong>{{ "back-http.post" | translate }}</strong>
-<pre>
+POST
+<pre *ngIf="resultPost; else noResult">
     {{ resultPost | json }}
 </pre>
+PUT
+<pre *ngIf="resultPut; else noResult">
+    {{ resultPut | json }}
+</pre>
+PATCH
+<pre *ngIf="resultPatch; else noResult">
+    {{ resultPatch | json }}
+</pre>
+DELETE
+<pre *ngIf="resultDelete; else noResult">
+    {{ resultDelete | json }}
+</pre>
+<ng-template #noResult>
+    <p> Loading...</p>
+</ng-template>
 <br/>
-<strong>{{ "back-http.original-url" | translate }}</strong> {{ baseUrl }}

@@ -4,11 +4,11 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TransferHttpModule, TransferHttpService } from '@gorniv/ngx-transfer-http';
+
 // libs
-import { CookieService } from 'ngx-cookie-service';
 import { PrebootModule } from 'preboot';
-// shared
-import { SharedModule } from '@shared/shared.module';
+
 // components
 import { AppRoutes } from './app.routing';
 import { AppComponent } from './app.component';
@@ -21,11 +21,11 @@ import { AppComponent } from './app.component';
     RouterModule,
     AppRoutes,
     BrowserAnimationsModule,
-    SharedModule.forRoot(),
+    TransferHttpModule
   ],
   declarations: [AppComponent],
-  providers: [CookieService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [TransferHttpService]
 })
 export class AppModule {
 }

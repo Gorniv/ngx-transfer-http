@@ -1,11 +1,12 @@
 const path = require('path');
 const webpack = require('webpack');
+
 /**
  * This is a server config which should be merged on top of common config
  */
 module.exports = {
+  mode: 'development',
   externals: [/(node_modules|main\..*\.js)/],
-
   entry: {
     // This is our Express server for Dynamic universal
     server: './server.ts',

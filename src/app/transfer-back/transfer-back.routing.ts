@@ -1,15 +1,10 @@
-import { TransferBackComponent } from './transfer-back.component';
 import { Routes, RouterModule } from '@angular/router';
+
+import { TransferBackComponent } from './transfer-back.component';
 
 const routes: Routes = [
   {
     path: '', component: TransferBackComponent,
-    data: {
-      meta: {
-        title: 'Back title',
-        description: 'Back description'
-      }
-    },
   },
 ];
 

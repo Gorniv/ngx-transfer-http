@@ -6,7 +6,7 @@ export class NotFoundService {
   constructor(@Optional() @Inject(RESPONSE) private _response: any) {
   }
 
-  public setStatus(code: number, message: string): void {
+  setStatus(code: number, message: string): void {
     if (this._response) {
       this._response.statusCode = code;
       this._response.statusMessage = message;
