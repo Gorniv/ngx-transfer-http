@@ -1,6 +1,6 @@
 {
   "name": "@gorniv/ngx-transfer-http",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Implementation http for Angular universal work based on TransferState",
   "keywords": [
     "angular",
