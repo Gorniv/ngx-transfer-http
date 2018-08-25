@@ -1,6 +1,6 @@
 import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { TransferState } from '@angular/platform-browser';
+import { TransferState, StateKey, makeStateKey } from '@angular/platform-browser';
 import { Observable, from } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { isPlatformBrowser, isPlatformServer } from '@angular/common';
@@ -15,7 +15,7 @@ export class TransferHttpService {
 
   }
 
-  public request(method: string, uri: string | Request, options?: {
+  request<T>(method: string, uri: string | Request, options?: {
     body?: any;
     headers?: HttpHeaders | {
       [header: string]: string | string[];
@@ -27,17 +27,17 @@ export class TransferHttpService {
     };
     responseType?: 'json';
     withCredentials?: boolean;
-  }): Observable<any> {
+  }): Observable<T> {
     // tslint:disable-next-line:no-shadowed-variable
-    return this.getData(method, uri, options, (method: string, url: string, options: any) => {
-      return this.httpClient.request(method, url, options);
+    return this.getData<T>(method, uri, options, (method: string, url: string, options: any) => {
+      return this.httpClient.request<T>(method, url, options);
     });
   }
 
   /**
    * Performs a request with `get` http method.
    */
-  get(url: string, options?: {
+  get<T>(url: string, options?: {
     headers?: HttpHeaders | {
       [header: string]: string | string[];
     };
@@ -48,17 +48,17 @@ export class TransferHttpService {
     reportProgress?: boolean;
     responseType?: 'json';
     withCredentials?: boolean;
-  }): Observable<any> {
+  }): Observable<T> {
     // tslint:disable-next-line:no-shadowed-variable
-    return this.getData('get', url, options, (method: string, url: string, options: any) => {
-      return this.httpClient.get(url, options);
+    return this.getData<T>('get', url, options, (_method: string, url: string, options: any) => {
+      return this.httpClient.get<T>(url, options);
     });
   }
 
   /**
    * Performs a request with `post` http method.
    */
-  post(url: string, body: any, options?: {
+  post<T>(url: string, body: any, options?: {
     headers?: HttpHeaders | {
       [header: string]: string | string[];
     };
@@ -69,17 +69,17 @@ export class TransferHttpService {
     reportProgress?: boolean;
     responseType?: 'json';
     withCredentials?: boolean;
-  }): Observable<any> {
+  }): Observable<T> {
     // tslint:disable-next-line:no-shadowed-variable
-    return this.getPostData('post', url, body, options, (url: string, body: any, options: any): Observable<any> => {
-      return this.httpClient.post(url, body, options);
+    return this.getPostData<T>('post', url, body, options, (url: string, body: any, options: any) => {
+      return this.httpClient.post<T>(url, body, options);
     });
   }
 
   /**
    * Performs a request with `put` http method.
    */
-  put(url: string, body: any, options?: {
+  put<T>(url: string, _body: any, options?: {
     headers?: HttpHeaders | {
       [header: string]: string | string[];
     };
@@ -90,18 +90,17 @@ export class TransferHttpService {
     reportProgress?: boolean;
     responseType?: 'json';
     withCredentials?: boolean;
-  }): Observable<any> {
+  }): Observable<T> {
     // tslint:disable-next-line:no-shadowed-variable
-    return this.getData('put', url, options, (method: string, url: string, options: any) => {
-      return this.httpClient.put(url, options);
+    return this.getData<T>('put', url, options, (_method: string, url: string, options: any) => {
+      return this.httpClient.put<T>(url, options);
     });
   }
-
 
   /**
    * Performs a request with `delete` http method.
    */
-  delete(url: string, options?: {
+  delete<T>(url: string, options?: {
     headers?: HttpHeaders | {
       [header: string]: string | string[];
     };
@@ -112,17 +111,17 @@ export class TransferHttpService {
     reportProgress?: boolean;
     responseType?: 'json';
     withCredentials?: boolean;
-  }): Observable<any> {
+  }): Observable<T> {
     // tslint:disable-next-line:no-shadowed-variable
-    return this.getData('delete', url, options, (method: string, url: string, options: any) => {
-      return this.httpClient.delete(url, options);
+    return this.getData<T>('delete', url, options, (_method: string, url: string, options: any) => {
+      return this.httpClient.delete<T>(url, options);
     });
   }
 
   /**
    * Performs a request with `patch` http method.
    */
-  patch(url: string, body: any, options?: {
+  patch<T>(url: string, body: any, options?: {
     headers?: HttpHeaders | {
       [header: string]: string | string[];
     };
@@ -133,17 +132,17 @@ export class TransferHttpService {
     reportProgress?: boolean;
     responseType?: 'json';
     withCredentials?: boolean;
-  }): Observable<any> {
+  }): Observable<T> {
     // tslint:disable-next-line:no-shadowed-variable
-    return this.getPostData('patch', url, body, options, (url: string, body: any, options: any): Observable<any> => {
-      return this.httpClient.patch(url, body, options);
+    return this.getPostData<T>('patch', url, body, options, (url: string, body: any, options: any): Observable<any> => {
+      return this.httpClient.patch<T>(url, body, options);
     });
   }
 
   /**
    * Performs a request with `head` http method.
    */
-  head(url: string, options?: {
+  head<T>(url: string, options?: {
     headers?: HttpHeaders | {
       [header: string]: string | string[];
     };
@@ -154,17 +153,17 @@ export class TransferHttpService {
     reportProgress?: boolean;
     responseType?: 'json';
     withCredentials?: boolean;
-  }): Observable<any> {
+  }): Observable<T> {
     // tslint:disable-next-line:no-shadowed-variable
-    return this.getData('head', url, options, (method: string, url: string, options: any) => {
-      return this.httpClient.head(url, options);
+    return this.getData<T>('head', url, options, (_method: string, url: string, options: any) => {
+      return this.httpClient.head<T>(url, options);
     });
   }
 
   /**
    * Performs a request with `options` http method.
    */
-  options(url: string, options?: {
+  options<T>(url: string, options?: {
     headers?: HttpHeaders | {
       [header: string]: string | string[];
     };
@@ -175,18 +174,18 @@ export class TransferHttpService {
     reportProgress?: boolean;
     responseType?: 'json';
     withCredentials?: boolean;
-  }): Observable<any> {
+  }): Observable<T> {
     // tslint:disable-next-line:no-shadowed-variable
-    return this.getData('options', url, options, (method: string, url: string, options: any) => {
-      return this.httpClient.options(url, options);
+    return this.getData<T>('options', url, options, (_method: string, url: string, options: any) => {
+      return this.httpClient.options<T>(url, options);
     });
   }
 
   // tslint:disable-next-line:max-line-length
-  private getData(method: string,
+  private getData<T>(method: string,
     uri: string | Request,
     options: any,
-    callback: (method: string, uri: string | Request, options: any) => Observable<any>): any {
+    callback: (method: string, uri: string | Request, options: any) => Observable<any>): Observable<T> {
 
     let url = uri;
 
@@ -194,13 +193,14 @@ export class TransferHttpService {
       url = uri.url;
     }
 
-    const key = url + (options ? JSON.stringify(options) : '');
+    const tempKey = url + (options ? JSON.stringify(options) : '');
+    const key = makeStateKey<string>(tempKey);
 
     try {
       return this.resolveData(key);
     } catch (e) {
       return callback(method, uri, options)
-        .pipe(tap(data => {
+        .pipe(tap((data: T) => {
           if (isPlatformBrowser(this.platformId)) {
             // Client only code.
             // nothing;
@@ -213,10 +213,10 @@ export class TransferHttpService {
   }
 
   // tslint:disable-next-line:max-line-length
-  private getPostData(method: string,
+  private getPostData<T>(_method: string,
     uri: string | Request,
     body: any, options: any,
-    callback: (uri: string | Request, body: any, options: any) => Observable<Response>): any {
+    callback: (uri: string | Request, body: any, options: any) => Observable<any>): Observable<T> {
 
     let url = uri;
 
@@ -224,13 +224,14 @@ export class TransferHttpService {
       url = uri.url;
     }
 
-    const key = url + (body ? JSON.stringify(body) : '') + (options ? JSON.stringify(options) : '');
+    const tempKey = url + (body ? JSON.stringify(body) : '') + (options ? JSON.stringify(options) : '');
+    const key = makeStateKey<string>(tempKey);
 
     try {
       return this.resolveData(key);
     } catch (e) {
       return callback(uri, body, options)
-        .pipe(tap(data => {
+        .pipe(tap((data: T) => {
           if (isPlatformBrowser(this.platformId)) {
             // Client only code.
             // nothing;
@@ -242,8 +243,8 @@ export class TransferHttpService {
     }
   }
 
-  private resolveData(key: any): any {
-    const data = this.getFromCache(key);
+  private resolveData<T>(key: StateKey<string>): Observable<T> {
+    const data = this.getFromCache<T>(key);
 
     if (!data) {
       throw new Error();
@@ -260,11 +261,11 @@ export class TransferHttpService {
     return from(Promise.resolve(data));
   }
 
-  private setCache(key, data): any {
-    return this.transferState.set(key, data);
+  private setCache<T>(key: StateKey<string>, data: T): void {
+    return this.transferState.set<string>(key, JSON.stringify(data));
   }
 
-  private getFromCache(key): any {
-    return this.transferState.get(key, null);
+  private getFromCache<T>(key: StateKey<string>): T {
+    return this.transferState.get<T>(key, null);
   }
 }
