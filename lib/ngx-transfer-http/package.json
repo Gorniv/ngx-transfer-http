@@ -31,11 +31,11 @@
   },
   "homepage": "https://github.com/Gorniv/ngx-transfer-http",
   "peerDependencies": {
-    "@angular/common": ">=6.0.0 <7.0.0",
-    "@angular/compiler": ">=6.0.0 <7.0.0",
-    "@angular/core": ">=6.0.0 <7.0.0",
+    "@angular/common": ">=4.0.0",
+    "@angular/compiler": ">=4.0.0",
+    "@angular/core": ">=4.0.0",
     "typescript": ">=2.7.0",
-    "rxjs": ">=6.0.0 <7.0.0"
+    "rxjs": ">=6.0.0"
   },
   "ngPackage": {
     "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
