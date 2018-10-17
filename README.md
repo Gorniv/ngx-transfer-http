@@ -5,6 +5,10 @@ The package can be installed using:
 
 `npm install @gorniv/ngx-transfer-http --save`
 
+v1.1.2 is for use on Angular5
+
+\>v1.1.2 are for use on Angular6
+
 # TransferHttpModule
 
 in `app.module.ts`
