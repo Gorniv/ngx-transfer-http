@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.2.1"></a>
+## [2.2.1](https://github.com/Gorniv/ngx-transfer-http/compare/v2.2.0...v2.2.1) (2018-10-24)
+
+
+### Bug Fixes
+
+* add readme for publish:lib ([797cc40](https://github.com/Gorniv/ngx-transfer-http/commit/797cc40))
+* add release:version ([a5729ec](https://github.com/Gorniv/ngx-transfer-http/commit/a5729ec))
+
+
+
 <a name="2.2.0"></a>
 # [2.2.0](https://github.com/Gorniv/ngx-transfer-http/compare/v2.1.3...v2.2.0) (2018-10-24)
 
