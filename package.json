@@ -25,7 +25,7 @@
     "packagr": "ng-packagr -p lib/ngx-transfer-http/package.json",
     "release:lib": "npm run prepublish:lib && cd ./lib/ngx-transfer-http && npm run standard",
     "prepublish:lib": "npm run packagr",
-    "publish:lib": "npm publish ./lib/ngx-transfer-http/dist --access public",
+    "publish:lib": "npm publish ./lib/ngx-transfer-http/dist --readme --access public",
     "format:check": "prettier --write --config ./.prettierrc --list-different \"lib/ngx-transfer-http/src/*{.ts,.json,.scss}\""
   },
   "private": false,
