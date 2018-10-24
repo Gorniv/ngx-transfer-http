@@ -1,0 +1,10 @@
+{
+  "groups": {
+    "default": {
+      "packages": [
+        "lib/ngx-transfer-http/package.json",
+        "package.json"
+      ]
+    }
+  }
+}
