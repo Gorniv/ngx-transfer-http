@@ -23,6 +23,7 @@
     "build:prerender": "npm run build:universal && npm run generate:prerender",
     "generate:prerender": "node prerender.js",
     "packagr": "ng-packagr -p lib/ngx-transfer-http/package.json",
+    "release:lib": "npm run prepublish:lib && cd ./lib/ngx-transfer-http && npm run standard",
     "prepublish:lib": "npm run packagr",
     "publish:lib": "npm publish ./lib/ngx-transfer-http/dist --access public"
   },
