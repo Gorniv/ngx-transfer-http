@@ -54,13 +54,16 @@ let previousRender = Promise.resolve();
 // Iterate each route path
 ROUTES.forEach(route => {
   const fullPath = join(BROWSER_FOLDER, route);
-
   // Make sure the directory structure is there
   if (!existsSync(fullPath)) {
     let syncpath = BROWSER_FOLDER;
     route.split('/').forEach(element => {
-      syncpath = syncpath + '/' + element;
-      mkdirSync(syncpath);
+      syncpath = join(syncpath , element);
+      try {
+        mkdirSync(syncpath);
+      } catch (error) {
+        console.log(error);
+      }
     });
   }
 
