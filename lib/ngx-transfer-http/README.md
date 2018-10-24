@@ -61,5 +61,3 @@ getData(): void{
 check:
 1) Node server console
 2) Open network in developer tools browser and your XHR network must be empty
-
-![network chrome](https://raw.githubusercontent.com/Gorniv/ngx-transfer-http/master/docs/imgs/check0.jpg)
