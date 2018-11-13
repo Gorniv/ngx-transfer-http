@@ -128,8 +128,8 @@ export class TransferHttpService {
     },
   ): Observable<T> {
     // tslint:disable-next-line:no-shadowed-variable
-    return this.getData<T>('put', url, options, (_method: string, url: string, options: any) => {
-      return this.httpClient.put<T>(url, options);
+    return this.getPostData<T>('put', url, _body, options, (_method: string, url: string, _body: any, options: any) => {
+      return this.httpClient.put<T>(url, _body, options);
     });
   }
 
