@@ -291,13 +291,12 @@ export class TransferHttpService {
     }
   }
 
-  // tslint:disable-next-line:max-line-length
   private getPostData<T>(
     _method: string,
     uri: string | Request,
     body: any,
     options: any,
-    callback: (uri: string | Request, body: any, options: any) => Observable<any>,
+    callback: (method: string, uri: string | Request, body: any, options: any) => Observable<any>,
   ): Observable<T> {
     let url = uri;
 
@@ -312,7 +311,7 @@ export class TransferHttpService {
     try {
       return this.resolveData<T>(key);
     } catch (e) {
-      return callback(uri, body, options).pipe(
+      return callback(_method, uri, body, options).pipe(
         tap((data: T) => {
           if (isPlatformBrowser(this.platformId)) {
             // Client only code.
