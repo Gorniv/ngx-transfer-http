@@ -1,6 +1,6 @@
 {
   "name": "@gorniv/ngx-transfer-http",
-  "version": "2.2.6",
+  "version": "2.2.8",
   "description": "Implementation http for Angular universal work based on TransferState",
   "keywords": [
     "angular",
@@ -43,5 +43,8 @@
       "entryFile": "public_api.ts"
     },
     "dest": "./dist"
+  },
+  "devDependencies": {
+    "standard-version": "^4.4.0"
   }
 }
