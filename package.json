@@ -23,10 +23,10 @@
     "build:prerender": "npm run build:universal && npm run generate:prerender",
     "generate:prerender": "node prerender.js",
     "packagr": "ng-packagr -p lib/ngx-transfer-http/package.json",
-    "release:lib": "npm run prepublish:lib && cd ./lib/ngx-transfer-http && npm run standard",
+    "release:lib": "npm run prepublish:lib && cd ./lib/ngx-transfer-http && npm i && npm run standard",
     "prepublish:lib": "npm run packagr",
     "publish:lib": "npm publish ./lib/ngx-transfer-http/dist --readme --access public",
-    "release:version":"npm run release:lib && npm run publish:lib",
+    "release:version": "npm run release:lib && npm run publish:lib",
     "format:check": "prettier --write --config ./.prettierrc --list-different \"lib/ngx-transfer-http/src/*{.ts,.json,.scss}\""
   },
   "private": false,

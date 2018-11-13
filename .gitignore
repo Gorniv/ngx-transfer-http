@@ -2,5 +2,4 @@ node_modules
 dist-server/*
 dist/*
 yarn-error.log
-lib/ngx-transfer-http/package-lock.json
 lib/ngx-transfer-http/dist/
