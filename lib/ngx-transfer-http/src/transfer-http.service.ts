@@ -98,7 +98,7 @@ export class TransferHttpService {
       body,
       options,
       // tslint:disable-next-line:no-shadowed-variable
-      (url: string, body: any, options: any) => {
+      (_method: string, url: string, body: any, options: any) => {
         return this.httpClient.post<T>(url, body, options);
       },
     );
@@ -191,7 +191,7 @@ export class TransferHttpService {
       body,
       options,
       // tslint:disable-next-line:no-shadowed-variable
-      (url: string, body: any, options: any): Observable<any> => {
+      (_method: string, url: string, body: any, options: any): Observable<any> => {
         return this.httpClient.patch<T>(url, body, options);
       },
     );
