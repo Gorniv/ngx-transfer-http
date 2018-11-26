@@ -14,13 +14,14 @@ v1.1.2 is for use on Angular5
 in `app.module.ts`
 
 ```ts
+import { HttpClientModule } from '@angular/common/http';
 import { TransferHttpModule, TransferHttpService } from '@gorniv/ngx-transfer-http';
 
 
 @NgModule({
   imports: [
     BrowserModule.withServerTransition({ appId: 'my-app' }),
-    HttpClientModule,
+    HttpClientModule, // must have this
     TransferHttpModule
     ...
 ```
