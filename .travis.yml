@@ -1,0 +1,13 @@
+os:
+  - linux
+language: node_js
+sudo: true
+node_js:
+  - "10.12"
+install:
+  - npm i
+before_script:
+  - npm i -g @angular/cli
+script:
+  - npm run packagr
+  - npm run build:universal
