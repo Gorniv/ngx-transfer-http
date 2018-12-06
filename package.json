@@ -71,7 +71,7 @@
     "ssri": "6.0.1",
     "tslint": "5.11.0",
     "tsickle": "0.34.0",
-    "typescript": "3.2.1",
+    "typescript": "3.1.6",
     "rxjs-tslint": "0.1.6",
     "tslint-eslint-rules": "5.4.0",
     "tslint-origin-ordered-imports-rule": "1.1.2",
