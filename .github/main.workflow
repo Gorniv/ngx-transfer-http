@@ -3,19 +3,19 @@ workflow "New workflow" {
   resolves = ["packagr", "lint"]
 }
 
-action "install" {
+action "Install" {
   uses = "actions/npm@e7aaefe"
-  runs = "install"
+  args = "install"
 }
 
 action "packagr" {
   uses = "actions/npm@e7aaefe"
-  needs = ["install"]
-  runs = "packagr"
+  needs = ["Install"]
+  args = ["run", "packagr"]
 }
 
 action "lint" {
   uses = "actions/npm@e7aaefe"
-  needs = ["install"]
-  runs = "lint"
+  needs = ["Install"]
+  args = ["run", "lint"]
 }
