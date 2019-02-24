@@ -1,3 +1,5 @@
+[![npm Downloads](https://img.shields.io/npm/dw/@gorniv/ngx-transfer-http.svg?style=flat-square)](https://www.npmjs.com/package/@gorniv/ngx-transfer-http)
+
 # ngx-transfer-http
 Implementation http for Angular universal work based on TransferState
 
